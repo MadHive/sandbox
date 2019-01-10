@@ -14,18 +14,14 @@ import (
 func main() {
 	ctx := context.Background()
 
-	projectID := "madhive-central"
+	projectID := "PROJECTID"
 
 	client, err := bigquery.NewClient(ctx, projectID)
 	if err != nil {
 		log.Fatalf("Failed to create client: %v", err)
 	}
 
-	fmt.Println("Client created!")
-
-	query := client.Query("SELECT madhive_id, sim.url FROM `madhive-central.jelly.logs` WHERE datehour = TIMESTAMP('2018-12-16')")
-
-	fmt.Println("Querying for data...")
+	query := client.Query("QUERY")
 
 	it, err := query.Read(ctx)
 	if err != nil {
